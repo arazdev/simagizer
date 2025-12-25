@@ -83,7 +83,7 @@ We may update this privacy policy from time to time. Changes will be reflected i
 ## Contact
 
 For privacy concerns or questions, please open an issue on our GitHub repository:
-https://github.com/yourusername/simagizer/issues
+https://github.com/arazdev/simagizer/issues
 
 ## Summary
 

@@ -66,4 +66,4 @@ MIT License - see [LICENSE](LICENSE) for details
 
 ## Support
 
-For issues or feature requests, please [open an issue](https://github.com/yourusername/simagizer/issues).
+For issues or feature requests, please [open an issue](https://github.com/arazdev/simagizer/issues).
