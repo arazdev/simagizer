@@ -69,7 +69,6 @@ You can:
 | `activeTab` | Read content from the current page when you click Summarize |
 | `scripting` | Inject script to extract text from web pages |
 | `storage` | Save your summaries, settings, and API key locally |
-| `downloads` | Allow downloading generated images |
 | `host_permissions` (api.openai.com) | Communicate with OpenAI's API |
 
 ## Children's Privacy
