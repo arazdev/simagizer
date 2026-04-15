@@ -24,6 +24,14 @@ function SignInForm({ onSubmit, onCancel }) {
           placeholder="sk-..."
           autoFocus
         />
+        <a
+          href="https://platform.openai.com/api-keys"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ fontSize: '0.75rem', color: '#00e5ff', marginTop: '6px', display: 'inline-block' }}
+        >
+          Get your API key from OpenAI →
+        </a>
       </div>
       <div className="form-actions">
         <button type="submit" className="btn btn-primary" disabled={isLoading}>

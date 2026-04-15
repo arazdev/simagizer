@@ -6,6 +6,7 @@ import SummaryItem from './components/SummaryItem';
 import TextToImage from './components/TextToImage';
 import SpeechToSummary from './components/SpeechToSummary';
 import { summarizeText, extractTextFromTab } from '../utils/api';
+import Options from '../options/Options';
 
 function App() {
   const { apiKey, isAuthenticated, isLoading: authLoading, signIn, signOut } = useAuth();
@@ -17,6 +18,7 @@ function App() {
   const [showSpeech, setShowSpeech] = useState(false);
   const [isSummarizing, setIsSummarizing] = useState(false);
   const [latestSummary, setLatestSummary] = useState(null);
+  const [showOptions, setShowOptions] = useState(false);
 
   const handleSignIn = async (key) => {
     const success = await signIn(key);
@@ -75,10 +77,14 @@ function App() {
     return <div className="container loading">Loading...</div>;
   }
 
+  if (showOptions) {
+    return <Options onBack={() => setShowOptions(false)} />;
+  }
+
   return (
     <div className="container">
       <header>
-        <a href="options.html" className="settings-icon" title="Settings">⚙️</a>
+        <a href="#" className="settings-icon" title="Settings" onClick={(e) => { e.preventDefault(); setShowOptions(true); }}>⚙️</a>
         <h1>Simagizer</h1>
         <p className="subtitle"></p>
       </header>
@@ -192,6 +198,40 @@ function App() {
           </button>
         </div>
       )}
+
+      <footer style={{ marginTop: '20px', paddingTop: '12px', borderTop: '1px solid var(--dark-border)', textAlign: 'center', fontSize: '0.7rem', color: '#8b949e' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '12px', flexWrap: 'wrap' }}>
+          <a
+            href="https://www.producthunt.com/posts/simagizer"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: '#00e5ff', textDecoration: 'none' }}
+          >
+            Product Hunt
+          </a>
+          <a
+            href="https://github.com/arazdev/simagizer"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: '#00e5ff', textDecoration: 'none' }}
+          >
+            GitHub
+          </a>
+          <a
+            href="https://www.linkedin.com/in/arazmyrat/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: '#00e5ff', textDecoration: 'none' }}
+          >
+            LinkedIn
+          </a>
+        </div>
+        <div style={{ marginTop: '4px' }}>
+          <a href="https://mail.google.com/mail/?view=cm&to=arazmyrat.dev@gmail.com" target="_blank" rel="noopener noreferrer" style={{ color: '#8b949e', textDecoration: 'none' }}>
+            arazmyrat.dev@gmail.com
+          </a>
+        </div>
+      </footer>
     </div>
   );
 }

@@ -54,9 +54,10 @@ export const AVAILABLE_MODELS = [
   { value: 'gpt-3.5-turbo', label: 'GPT-3.5 Turbo' },
 ];
 
-// Image sizes for DALL-E 3
+// Image sizes for GPT Image
 export const IMAGE_SIZES = [
   { value: '1024x1024', label: '1024x1024' },
-  { value: '1792x1024', label: '1792x1024 (Wide)' },
-  { value: '1024x1792', label: '1024x1792 (Tall)' },
+  { value: '1536x1024', label: '1536x1024 (Wide)' },
+  { value: '1024x1536', label: '1024x1536 (Tall)' },
+  { value: 'auto', label: 'Auto' },
 ];

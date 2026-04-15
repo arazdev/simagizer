@@ -75,11 +75,11 @@ export const summarizeText = async (text, apiKey, settings) => {
 };
 
 /**
- * Generate image using DALL-E 3
+ * Generate image using GPT Image
  */
 export const generateImage = async (prompt, apiKey, size = '1024x1024') => {
   // Ensure valid size
-  const validSizes = ['1024x1024', '1792x1024', '1024x1792'];
+  const validSizes = ['1024x1024', '1536x1024', '1024x1536', 'auto'];
   const imageSize = validSizes.includes(size) ? size : '1024x1024';
   
   const response = await fetch(ENDPOINTS.IMAGES, {
@@ -89,7 +89,7 @@ export const generateImage = async (prompt, apiKey, size = '1024x1024') => {
       Authorization: `Bearer ${apiKey}`,
     },
     body: JSON.stringify({
-      model: 'dall-e-3',
+      model: 'gpt-image-1',
       prompt,
       n: 1,
       size: imageSize,
@@ -104,7 +104,10 @@ export const generateImage = async (prompt, apiKey, size = '1024x1024') => {
   }
 
   const json = await response.json();
-  return json.data[0].url;
+  const item = json.data[0];
+  // gpt-image-1 returns b64_json by default; dall-e models return url
+  if (item.url) return item.url;
+  return `data:image/png;base64,${item.b64_json}`;
 };
 
 /**

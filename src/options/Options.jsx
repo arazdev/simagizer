@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getSync, setSync } from '../utils/storage';
 import { DEFAULT_SETTINGS, AVAILABLE_MODELS, IMAGE_SIZES } from '../utils/constants';
 
-function Options() {
+function Options({ onBack }) {
   const [settings, setSettings] = useState(DEFAULT_SETTINGS);
   const [saved, setSaved] = useState(false);
 
@@ -32,14 +32,15 @@ function Options() {
   };
 
   return (
-    <div className="container" style={{ maxWidth: '600px', margin: '0 auto', padding: '40px 20px', position: 'relative' }}>
-      <button 
-        onClick={() => window.close()} 
-        className="btn btn-small" 
-        style={{ position: 'absolute', right: '20px', top: '10px' }}
-      >
-        ← Back
-      </button>
+    <div className="container" style={{ maxWidth: '600px', margin: '0 auto', padding: '20px' }}>
+      <div style={{ textAlign: 'right', marginBottom: '8px' }}>
+        <button 
+          onClick={() => onBack ? onBack() : window.close()} 
+          className="btn btn-small"
+        >
+          ← Back
+        </button>
+      </div>
       <header>
         <h1>Simagizer Settings</h1>
         <p className="subtitle">Configure your OpenAI preferences</p>
